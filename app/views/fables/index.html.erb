@@ -1,0 +1,50 @@
+
+<%if fuser_signed_in?%>
+<h1>Our Best Friends</h1>
+
+<table class="table table-responsive table-striped table-bordered table-hover ">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th>User_Id</th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fables.each do |fable| %>
+    <%if fable.fuser==current_fuser%>
+      <tr>
+        <td>
+          <%= link_to fable.first_name + fable.last_name, fable %>
+        
+            
+        </td>
+       
+        <td><%= fable.email %></td>
+        <td><%= fable.phone %></td>
+        <td><%= fable.twitter %></td>
+        <td><%= fable.fuser_id %></td>
+        
+       
+        <td><%= link_to 'Delete', fable, method: :delete, data: { confirm: 'Are you sure?' } ,class:" btn btn-danger btn-sm"%></td>
+      </tr>
+      <%end%>
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Friend', new_fable_path, class:"btn btn-secondary "%>
+<%else%>
+
+<h1>Faran</h1>
+<p>I love rails</p>
+<p>starting </p>
+<%end%>

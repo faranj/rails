@@ -1,0 +1,49 @@
+<%= form_with(model: fable) do |form| %>
+  <% if fable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fable.errors.count, "error") %> prohibited this fable from being saved:</h2>
+
+      <ul>
+        <% fable.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class:"form-control", placeholder:"First Name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class:"form-control" , placeholder:"Last Name"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control" , placeholder:"Email" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class:"form-control", placeholder:"phone" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter, class:"form-control", placeholder:"twitter" %>
+  </div>
+
+<div class="field form-group">
+    <%= form.number_field :fuser_id,id: :fable_fuser_id,
+    class:"form-control", value:current_fuser.id %>
+    
+  </div>
+
+  <div class="actions form-group">
+  </br>
+    <%= form.submit %>
+  </div>
+<% end %>
